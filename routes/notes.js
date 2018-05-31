@@ -75,7 +75,7 @@ router.get('/:id', (req, res, next) => {
 // Put update an item
 router.put('/:id', (req, res, next) => {
   const id = req.params.id;
-
+  //console.log(req.params.id);
   /***** Never trust users - validate input *****/
   const updateObj = {};
   const updateableFields = ['title', 'content'];
@@ -144,7 +144,7 @@ router.post('/', (req, res, next) => {
     .into('notes')
     .returning(['id', 'title', 'content'])
     .then(([result]) => {
-      if (item) {
+      if (result) {
         res.location(`http://${req.headers.host}/notes/${result.id}`).status(201).json(result);
       }
     })
