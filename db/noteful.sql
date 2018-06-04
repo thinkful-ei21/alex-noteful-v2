@@ -1,56 +1,17 @@
-DROP TABLE IF EXISTS folders;
 
-CREATE TABLE folders (
-    id serial PRIMARY KEY,
-    name text NOT NULL
-);
 
-ALTER SEQUENCE folders_id_seq RESTART WITH 100;
+--CREATE TABLE tags (
+  --  id serial PRIMARY KEY,
+    --name text NOT NULL
+--);
 
-INSERT INTO folders (name) VALUES
-  ('Archive'),
-  ('Drafts'),
-  ('Personal'),
-  ('Work');
+--CREATE TABLE notes_tags (
+  --note_id INTEGER NOT NULL REFERENCES notes ON DELETE CASCADE,
+  --tag_id INTEGER NOT NULL REFERENCES tags ON DELETE CASCADE
+--);
 
-INSERT INTO notes (title, content, folder_id) VALUES 
-	(
-		'Spaceman Eats Cheese And Saves The World', 
-		'Lorem ipsum dolor sit amet,',
-		100
-	),
-	(
-		'Blah Blah Blah', 
-		'Lorem ipsum dolor sit amet,',
-		101
-	),
-	(
-		'Cats Take Over The World...Again', 
-		'Lorem ipsum dolor sit amet,',
-		102
-	),
-	(
-		'Turtles: All You Need To Know', 
-		'Lorem ipsum dolor sit amet,',
-		103
-	),
-	(
-		'Spaaaccceeeee', 
-		'Lorem ipsum dolor sit amet,',
-		100
-	),
-	(
-		'Blah', 
-		'Lorem ipsum dolor sit amet,',
-		101
-	),
-	(
-		'Cats', 
-		'Lorem ipsum dolor sit amet,',
-		102
-	),
-	(
-		'Turtles', 
-		'Lorem ipsum dolor sit amet,',
-		103
-	);
+insert into tags (name) values
+('work'), ('fun'), ('trending'), ('cats'), ('food');
+
+insert into notes_tags (note_id, tag_id) values
+(1,2),(1,5),(2,1),(3,4),(3,2),(3,3),(4,1),(5,2),(6,1),(7,4),(7,2),(8,1),(9,5),(9,3);
